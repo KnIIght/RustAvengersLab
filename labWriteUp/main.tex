@@ -1,0 +1,196 @@
+%-----------------------------
+% CSCI 315, Spring 2018
+%
+% <Gage Smith>
+% Language: <Rust>
+%-----------------------------
+
+
+\documentclass[11pt]{article}
+%-----------------------------
+% List of Packages
+%-----------------------------
+\usepackage{graphicx}   % Need for images
+\usepackage{caption}     % Useful to suppress caption numbers with *
+\usepackage{listings}      % Needed for code and syntax highlighting
+\usepackage{minted}
+\usepackage{multicol}     % Permits sections with multiple columns
+\usepackage{enumitem}  % More options for itemize, enumerate, and description
+\usepackage{hyperref}            % For nice urls
+\usepackage{url}
+\usepackage{tikz}            % For drawing cool things
+\usepackage{xcolor}
+
+\usepackage[margin=0.5in]{geometry}
+%
+%  You may add more packages as needed
+%
+\usepackage{listings, listings-rust}
+% Set your language here                                 <-----  CHANGE
+\lstset{% 
+    style=boxed, showstringspaces=false, stringstyle=\color{red}, keywordstyle=\color{orange}}
+
+
+%-----------------------------
+% Set Settings and Macros
+%-----------------------------
+
+% define some custom colors
+\definecolor{comment_green}{rgb}{0,0.6,0}
+\definecolor{number_gray}{rgb}{0.5,0.5,0.5}
+\definecolor{string_mauve}{rgb}{0.58,0,0.82}
+
+% This is the default columnsep (from multicolums)
+% \setlength\columnsep{10pt}
+
+%-----------------------------
+\begin{document}
+%-----------------------------
+% Header
+%-----------------------------
+
+\title{\includegraphics[width=0.05\textwidth]{rust_logo.png}ust Programming Lab \\ {\sc Programming The Avengers}}
+\date{}
+\maketitle
+%-----------------------------
+% Overview
+%-----------------------------
+\section*{Overview}
+Help! The \textbf{Avengers} forgot how to "Avenge" and need to be told what traits they each possess. 
+Using the \textcolor{orange}{Rust Programming Language}, write 4 structs for \textcolor{blue}{Captain America}, \textcolor{violet}{Thor}, \textcolor{green}{Hulk} and \textcolor{red}{Iron Man} and have them all inherit the \textbf{Avengers} trait. You can follow the example set by the original hero, \textcolor{olive}{Stan Lee}. From there, modify the \textbf{Avengers} trait with specific implementations depending on which hero is using it. 
+
+\section*{Where to get Rust:}
+For this lab, you will use Rust Programming Language. To install Rust on your computer, visit \href{https://www.rust-lang.org/learn/get-started}{\textcolor{orange}{rust-lang.org}}. There, you will find information about the installation as well as using the Rust build tool and package manager \textcolor{blue}{Cargo}, which is required for this lab.
+
+\section*{Lab Objectives:}
+
+\begin{itemize}
+    \item Use Cargo to build and run your Rust program. Your entire Cargo build must be submitted.
+    \item Create 4 structs - one for each of the heroes.
+    \item Implement each struct as well as implement the given \textbf{Avenger} trait for each struct.
+    \item Take in user input (building each structure). Then, print out the desired output depending on what hero is being created. (Which can be figured out from the tests directory given) 
+    \item Each hero must have a name, superpower, weapon, and deemed worthy or not (boolean value). 
+\end{itemize}
+\bigskip
+\section*{Cargo Package Management:}
+The Cargo package manager is an extremely useful tool that takes care of all dependencies, compiles all of your packages, and allows you to upload them to \href{https://crates.io/}{\textcolor{blue}{Crates.io}} (Rust's "Community Package Registry"). By installing Rust, you are automatically given the latest release of Cargo. For more information on how to take your first steps visit \href{https://doc.rust-lang.org/cargo/index.html}{\textcolor{orange}{The Cargo Book}}.
+\newpage
+\section*{Implementation:}
+
+\subsection*{--Stan The Man--}
+Given to you is a struct already formed for "Stan The Man". Model the rest of your structs off of this code. 
+
+\begin{lstlisting}[language=rust]
+pub struct Stan { excelsior: bool, name: String, superpower: String, _weapon: String }
+\end{lstlisting}
+
+\subsection*{--The Avenger Trait--}
+Traits can be implemented for any created struct in a Rust program. Take this skeleton of an \textbf{Avenger} trait and implement the "new" function to create an Avenger based upon what traits struct Stan already possesses. Then write a function "worthy" which will take in a reference to "Self" and return a boolean value. Finally, create a base for the function, "catch\_phrase", which will print the specific catch phrase of that hero.  
+\begin{lstlisting}[language=rust]
+pub trait Avenger
+{
+    fn new(/*Add parameters here based upon Stan*/) -> Self;
+
+    // Traits can provide default method definitions.
+    fn i_am(&self)
+    {println!("Wait....who am I?");}
+
+    // Write your catch phrase function.
+    
+    // Write your worthy function.
+}
+\end{lstlisting}
+
+\subsection*{--Impl of Stan--}
+Implement the functions for struct, Stan. Write a function that will return the excelsior boolean value given to the struct. Write a function that will call the previous function, and if the value is true, print the structs name attribute as already worthy, else change the boolean value to true and print the given quote.
+
+\begin{lstlisting}[language=rust]
+impl Stan
+{
+    //Function to return excelsior struct attribute
+    
+    //Function skeleton given to you.
+    fn change_worth(&mut self)
+    {
+        //Your code goes here.
+    }
+}
+\end{lstlisting}
+\newpage
+\subsection*{--Impl the Avenger Trait for Stan--}
+Now apply the Avenger trait for the specific struct. Implement all functions of the Avenger trait.
+\begin{lstlisting}[language=rust]
+impl Avenger for Stan
+{
+    fn new(/*Base hero parameters from the above Avenger trait*/) -> Stan
+    {/*construct the Stan with given parameters.*/}
+    
+    fn i_am(&self)
+    {/*Write this function specifically to Stan struct. What would Stan say?*/}
+    
+    // catch phrase function
+    
+    // worthy function returning excelsior's value
+}
+\end{lstlisting}
+
+\subsection*{--The Main--}
+In your main function, you will take in user input and create the desired structs based on the input. Then, print to standard output the desired results.
+
+\begin{lstlisting}[language=rust]
+fn main()
+{
+    //Your code here
+}
+\end{lstlisting}
+
+\section*{Testing:}
+Your program should accept standard \textbf{input} and produce standard \textbf{output}. In order to test your code, you should use the Cargo commands to build and run your code for your own specific testing. If you are trying to run against the given tests, you can test your code with this command modifying justt which input file.
+
+\begin{lstlisting}[language=bash, keywordstyle=\color{black}]
+$ cargo run < tests/t00.in > results/t00.out
+\end{lstlisting}
+\bigskip
+\textcolor{red}{PRO TIP}: \href{https://www.rust-lang.org/}{\textcolor{blue}{this link}} to the Rust official language website will be your best friend in solving any and all issues related to this lab.
+
+\newpage
+
+\section*{Submission}
+Submit your entire \textcolor{orange}{lab\_rs} folder in the format of "first initial"\_"last name".tar. Make sure to include your \textcolor{blue}{Cargo.toml} and \textcolor{blue}{Cargo.lock} files to show you adequately used the Cargo package management system.
+
+\bigskip\bigskip
+\section*{Desired String Outputs}
+This is a section of all the desired string outputs for each hero. You can deduce this information from the tests directory given to you as well. 
+\begin{center}
+    \subsection*{Stan}
+        \begin{itemize}
+            \item My name is Stan and my power is luck.
+            \item With great power, comes great responsibility.
+            \item Stan is always worthy...
+        \end{itemize}
+    \subsection*{CaptainAmerica}
+        \begin{itemize}
+            \item My name is Steve, my power is enhanced strength and durability, my weapon is my vibranium shield.
+            \item I could do this all day.
+            \item Steve is already worthy...
+        \end{itemize}
+    \subsection*{IronMan}
+        \begin{itemize}
+            \item My name is Tony, my power is super intelligence and my weapon is Mark L.
+            \item I am Iron Man. *snap* 
+            \item In all due time. A hero becomes more than a hero.
+        \end{itemize}
+    \subsection*{Hulk}
+        \begin{itemize}
+            \item My name is Bruce, my power is being angry and my weapon is my fists.
+            \item HULK SMASH!
+            \item In all due time. A hero becomes more than a hero.
+        \end{itemize}
+    \subsection*{Thor}
+        \begin{itemize}
+            \item My name is Thor, my power is being the God of thunder and my weapons are Mjolnir and Stormbreaker.
+            \item You're big. I've fought bigger.
+            \item Thor is always worthy...
+        \end{itemize}
+\end{center}
+\end{document}
